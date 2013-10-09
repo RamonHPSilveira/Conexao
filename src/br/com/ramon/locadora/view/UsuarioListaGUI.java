@@ -66,6 +66,11 @@ public class UsuarioListaGUI extends javax.swing.JFrame {
         btAtualizar.setText("Atualizar");
 
         btRemover.setText("Remover");
+        btRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout RemoverLayout = new javax.swing.GroupLayout(Remover);
         Remover.setLayout(RemoverLayout);
@@ -132,6 +137,15 @@ public class UsuarioListaGUI extends javax.swing.JFrame {
         ui.setVisible(true);
         
     }//GEN-LAST:event_btInserirActionPerformed
+
+    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
+        int linhaSelecionada = -1;
+        tabela.getSelectedRow();
+        if(linhaSelecionada > 0){
+            int idUsuario = (int)tabela.getValueAt(linhaSelecionada,0);
+            
+        }
+    }//GEN-LAST:event_btRemoverActionPerformed
 
     /**
      * @param args the command line arguments

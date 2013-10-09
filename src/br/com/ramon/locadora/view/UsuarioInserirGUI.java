@@ -13,12 +13,14 @@ import javax.swing.table.DefaultTableModel;
  * @author guest01
  */
 public class UsuarioInserirGUI extends javax.swing.JFrame {
-
+private DefaultTableModel modelo;
     /**
      * Creates new form UsuarioInserirGUI
      */
     public UsuarioInserirGUI(DefaultTableModel modelo) {
+        this.modelo = modelo;
         initComponents();
+    
     }
 
     /**
