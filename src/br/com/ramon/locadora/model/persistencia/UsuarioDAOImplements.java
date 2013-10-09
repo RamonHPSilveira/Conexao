@@ -16,7 +16,7 @@ public class UsuarioDAOImplements implements UsuarioDAO {
 
     private static final String INSERT = "insert into usuario (nome,login, senha, CFP, telefone, DataNascimento ,Sexo) "
             + "values (?,?,?,?,?,?,?)";
-    private static final String LIST = "select from usuario(nome,login,senha,CPF, DataNascimento, Sexo)";
+    private static final String LIST = "select from usuario(nome,login,senha,CFP, DataNascimento, Sexo)";
 
     @Override
     public int salve(Usuario u) {
