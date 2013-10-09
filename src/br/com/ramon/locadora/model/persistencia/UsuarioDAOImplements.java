@@ -8,13 +8,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class UsuarioDAOImplements implements UsuarioDAO {
 
-    private static final String INSERT = "insert into usuario (nome,login, senha, cpf, telefone, data_nascimento ,sexo) "
+    private static final String INSERT = "insert into usuario (nome,login, senha, CPF, telefone, DataNascimento ,Sexo) "
             + "values (?,?,?,?,?,?,?)";
+    private static final String LIST = "select from usuario(nome,login,senha,CPF, DataNascimento, Sexo)";
 
     @Override
     public int salve(Usuario u) {
@@ -66,7 +68,36 @@ public class UsuarioDAOImplements implements UsuarioDAO {
 
     @Override
     public List<Usuario> listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        List<Usuario> usuarios = new ArrayList();
+        try{
+            con = ConnectionFactory.getConnection();
+            pstm = con.prepareStatement(LIST);
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                Usuario u = new Usuario();
+                u.setCodigo(rs.getInt("codigo"));
+                u.setCpf(rs.getString("CPF"));
+                u.setDataNascimento(rs.getDate("DataNascimento"));
+                u.setLogin(rs.getString("login"));
+                u.setSenha(rs.getString("senha"));
+                u.setNome(rs.getString("nome"));
+                u.setSexo(rs.getString("Sexo"));
+                u.setTelefone(rs.getString("telefone"));
+                usuarios.add(u);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"erro ao listar" + e.getMessage());
+        }
+        
+        try{
+            ConnectionFactory.closeConnection(con, pstm ,rs);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro ao fechar conexao" + e.getMessage());
+        }
+        return usuarios;
     }
 
     @Override
