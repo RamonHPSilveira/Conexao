@@ -4,6 +4,10 @@
  */
 package br.com.ramon.locadora.view;
 
+import br.com.ramon.locadora.controller.UsuarioController;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author guest01
@@ -13,7 +17,7 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
     /**
      * Creates new form UsuarioInserirGUI
      */
-    public UsuarioInserirGUI() {
+    public UsuarioInserirGUI(DefaultTableModel modelo) {
         initComponents();
     }
 
@@ -48,7 +52,7 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
         btAdicionar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         painelfundo.setBackground(new java.awt.Color(255, 255, 255));
         painelfundo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Pessoa", 2, 0, null, new java.awt.Color(0, 204, 204)));
@@ -205,7 +209,17 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        UsuarioController uc = new UsuarioController();
+        int id = uc.salvar(u);
+        if(id>0){
+            modelo.addRow(new Object[]{id,u.getNome(), u.getCpf, u.getLogin()});
+            JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
+            
+        }
+        dispose();
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -221,37 +235,7 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsuarioInserirGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsuarioInserirGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsuarioInserirGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsuarioInserirGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UsuarioInserirGUI().setVisible(true);
-            }
-        });
-    }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btLimpar;

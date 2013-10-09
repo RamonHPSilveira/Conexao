@@ -57,6 +57,11 @@ public class UsuarioListaGUI extends javax.swing.JFrame {
         });
 
         btInserir.setText("Inserir");
+        btInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInserirActionPerformed(evt);
+            }
+        });
 
         btAtualizar.setText("Atualizar");
 
@@ -120,6 +125,13 @@ public class UsuarioListaGUI extends javax.swing.JFrame {
     private void txPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txPesquisaActionPerformed
+
+    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        UsuarioInserirGUI ui = new UsuarioInserirGUI(modelo);
+        ui.setLocationRelativeTo(null);
+        ui.setVisible(true);
+        
+    }//GEN-LAST:event_btInserirActionPerformed
 
     /**
      * @param args the command line arguments
