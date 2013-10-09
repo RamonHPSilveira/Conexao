@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 public class UsuarioDAOImplements implements UsuarioDAO {
 
-    private static final String INSERT = "insert into usuario (nome,login, senha, CPF, telefone, DataNascimento ,Sexo) "
+    private static final String INSERT = "insert into usuario (nome,login, senha, CFP, telefone, DataNascimento ,Sexo) "
             + "values (?,?,?,?,?,?,?)";
     private static final String LIST = "select from usuario(nome,login,senha,CPF, DataNascimento, Sexo)";
 

@@ -4,6 +4,8 @@
  */
 package br.com.ramon.locadora.view;
 
+import br.com.ramon.locadora.controller.UsuarioController;
+import br.com.ramon.locadora.model.Usuario;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +23,8 @@ public class UsuarioListaGUI extends javax.swing.JFrame {
      */
     public UsuarioListaGUI() {
         initComponents();
+        criaJTable();
+        scroll.setViewportView(tabela);
     }
 
     /**
@@ -160,4 +164,23 @@ public class UsuarioListaGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTextField txPesquisa;
     // End of variables declaration//GEN-END:variables
+
+    private void criaJTable() {
+        tabela = new JTable(modelo);
+        modelo.addColumn("Id");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Usuario");
+        modelo.addColumn("CPF");
+        preecherJTable();
+        
+    }
+    
+    private void preecherJTable(){
+        UsuarioController uc = new UsuarioController();
+    for(Usuario u :uc.listarTodos()){
+            modelo.addRow(new Object[]{
+            u.getCodigo(), u.getNome(),u.getCpf(),u.getLogin()
+            });
+        }
+    }
 }

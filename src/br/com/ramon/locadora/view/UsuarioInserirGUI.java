@@ -64,6 +64,7 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
         jLabel2.setText("Login :");
 
         txcodigo1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        txcodigo1.setEnabled(false);
 
         jLabel3.setText("Senha");
 
@@ -92,8 +93,18 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
         rbfeminino.setText("Feminino");
 
         btAdicionar.setText("Adicionar");
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
+            }
+        });
 
         btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelfundoLayout = new javax.swing.GroupLayout(painelfundo);
         painelfundo.setLayout(painelfundoLayout);
@@ -192,6 +203,20 @@ public class UsuarioInserirGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAdicionarActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        txnome.setText("");
+        txlogin.setText("");
+        txsenha.setText("");
+        txcpf.setText("");
+        txtelefone.setText("");
+        txdata.setText("");
+        gruposexo.clearSelection();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
